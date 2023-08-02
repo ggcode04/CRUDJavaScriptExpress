@@ -1,6 +1,7 @@
 module.exports = {
     obtener:function(conexion, funcion) {
         conexion.query("SELECT * FROM libros", funcion);
+        conexion.query("SELECT * FROM users", funcion);
     },
 
     insertar:function(conexion, datos, archivos, funcion) {

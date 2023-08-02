@@ -1,0 +1,62 @@
+<%- include('../layouts/cabecera.ejs') %>
+
+            <br/>
+            <br/>
+
+            <a href="/libros/crear" class="btn btn-primary" type="button">Crear nuevo libro</a>
+
+            <br/>
+            <br/>
+
+            <table class="table table-light">
+                <thead class="thead-light">
+                    <tr>
+                        <th>#</th>
+                        <th>NOMBRE</th>
+                        <th>IMAGEN</th>
+                        <th>ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for( let user = 0; user < users.length; user++ ) { %>
+                        <tr>
+                            <td> <%= users[user].id %> </td>
+
+                            <td> <%= users[user].nombre %> </td>
+
+                            <td> 
+
+                                <img class="img-thumbnail" width="100" src="images/<%= users[user].imagen %>" alt="image">
+
+                            </td>
+
+                            <td>
+                                <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+
+                                    <form class="form-inline" method="get" action="/libros/editar/<%= users[user].id %>">
+
+                                        <button class="btn btn-warning" type="submit">Editar</button>
+
+                                    </form>
+                                    
+                                </div>
+
+                                | 
+                                
+                                <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+
+                                    <form class="form-inline" method="post" action="/libros/eliminar/<%= users[user].id %>">
+
+                                        <button class="btn btn-danger" type="submit">Borrar</button>
+
+                                    </form>
+
+                                </div>
+                            
+                            </td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+
+<%- include('../layouts/pie.ejs') %>

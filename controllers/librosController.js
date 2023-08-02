@@ -1,5 +1,6 @@
 var conexion = require('../config/conexion.js');
 var libro = require('../model/libro.js');
+var users = require('../model/libro.js');
 var borrar = require('fs');
 
 module.exports={
@@ -82,5 +83,14 @@ module.exports={
         }
         
         res.redirect('/libros/')
-    }
+    },
+
+    user:function(req, res){
+        users.obtener(conexion, function(err, datos){
+            
+            console.log(datos);
+            
+            res.render('libros/user', { title: 'Aplicación', users:datos });
+        });
+    },
 }
